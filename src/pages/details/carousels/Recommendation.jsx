@@ -1,8 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const Recommendation = () => {
+import Carousel from "../../../components/carousel/Carousel";
+import useFetch from "../../../hooks/useFetch";
+
+const Recommendation = ({mediaType, id}) => {
+  const {data, loading, error}=useFetch(`/${mediaType}/${id}/recommendations`);
+  
   return (
-    <div>Recommendation</div>
+    <Carousel 
+      title="Recomendations"
+      data={data?.results}
+      loading={loading}
+      endpoint={mediaType}
+      />
   )
 }
 
